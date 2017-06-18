@@ -1,1 +1,40 @@
-<%= @post.nick %>, <%= @post.topic %>, <%= @post.content %>
+<html>
+    <head>
+        <title>Anemona</title>
+    </head>
+    
+    <body>
+        <header class="navbar navbar-fixed-top navbar-inverse">
+          <div class="container">
+              <a id="logo" href="#">Anemona</a>
+            <nav>
+              <ul class="nav navbar-nav navbar-right">
+                <li> <a href="/home">Home</a> </li>
+                <li><a href="/comunity">Comunidade</a></li>
+                <li><a href="/whoUse">Quem Usa</a></li>
+                <li><a href="/contact">Contato</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        <div class="container padding-title">
+            <div class="row">
+                <div class="row information">
+                    <div class="col-md-1">
+                        <h6>Cod: <%= @post.id %></h6>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>Tópico: #<%= @post.topic %></h6>
+                    </div>
+                </div>
+                <div class="row content">
+                    <div class="col-md-12 padding-title-20">
+                        <p>
+                            <%= @post.content %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
