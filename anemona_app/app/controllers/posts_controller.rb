@@ -3,6 +3,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
   
+  def index
+    @post = Post.paginate(page: params[:page], per_page: 20)
+  end
+  
   def show
     @post = Post.find(params[:id])
   end

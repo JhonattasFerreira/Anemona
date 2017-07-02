@@ -1,3 +1,14 @@
+
+<!--
+<ul>
+  <% @post.each do |post| %>
+    <li>
+      <%= link_to post.content, post %>
+    </li>
+  <% end %>
+</ul>
+-->
+
 <html>
     <head>
         <title>Anemona</title>
@@ -9,9 +20,9 @@
               <a id="logo" href="#">Anemona</a>
             <nav>
               <ul class="nav navbar-nav navbar-right">
-                <li> <a href="/home">Home</a> </li>
+                <li><a href="/home">Home</a> </li>
                 <li><a href="/comunity">Comunidade</a></li>
-                <li><a href="/posts">Desabafos</a></li>
+                <li><a class="item-color" href="/posts">Desabafos</a></li>
                 <li><a href="/whoUse">Quem Usa</a></li>
                 <li><a href="/contact">Contato</a></li>
               </ul>
@@ -19,23 +30,29 @@
           </div>
         </header>
         <div class="container padding-title">
-            <div class="row">
+            <%= will_paginate @post%>
+
+            <% @post.each do |post| %>
+            <div class="row padding-bottom-20">
                 <div class="row information">
+                    
+
                     <div class="col-md-1">
-                        <h6>Cod: <%= @post.id %></h6>
+                        <h6>Cod: <%= post.id %></h6>
                     </div>
                     <div class="col-md-3">
-                        <h6>Tópico: #<%= @post.topic %></h6>
+                        <h6>Tópico: #<%= post.topic %></h6>
                     </div>
                 </div>
                 <div class="row content">
                     <div class="col-md-12 padding-title-20">
                         <p>
-                            <%= @post.content %>
+                            <%= link_to post.content, post %>
                         </p>
                     </div>
                 </div>
             </div>
+            <% end %>
         </div>
     </body>
 </html>
