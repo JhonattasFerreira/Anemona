@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get  '/newPost',   to: 'posts#new'
   
   post '/newPost',  to: 'posts#create'
+  
+  post '/newComment', to: 'posts#createComment'
 
   resources :posts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

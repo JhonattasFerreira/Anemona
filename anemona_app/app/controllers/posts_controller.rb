@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+  $abc = 1
   def new
     @post = Post.new
+    
   end
   
   def index
@@ -9,6 +11,9 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    $abc = @post
+    @comments = @post.comments.paginate(page: params[:page])
+    @comment = @post.comments.build
   end
   
   def create
@@ -19,10 +24,23 @@ class PostsController < ApplicationController
       render 'new'
     end
   end
+  
+  def createComment
+    @comment =  $abc.comments.build(comments_params)
+    if @comment.save
+      redirect_to $abc
+    else
+      render 'static_pages/home'
+    end
+  end
 
   private
 
     def post_params
       params.require(:post).permit(:nick, :topic, :content)
+    end
+    
+    def comments_params
+      params.require(:comment).permit(:content)
     end
 end
